@@ -1,6 +1,6 @@
-syntax = "proto3"";
+syntax = "proto3";
 
-option go_package = "";
+option go_package = "github.com/ps/hellogrpc/messages";
 
 message HelloRequest {
     string Name = 1;
@@ -10,6 +10,6 @@ message HelloResponse {
     string Message = 1;
 }
 
-message HelloService {
+service HelloService {
     rpc SayHello (HelloRequest) returns (HelloResponse) {}
 }

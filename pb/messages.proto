@@ -30,3 +30,10 @@ message EmployeeRequest {
 message EmployeeResponse {
     Employee employee = 1;
 }
+
+service EmployeeService {
+    rpc GetByBadgeNumber (GetByBadgeNumberRequest) returns (EmployeeResponse);
+    rpc GetAll (GetAllRequest) returns (stream EmployeeResponse);
+    rpc Save (EmployeeRequest) returns (EmployeeResponse);
+    rpc SaveAll (stream EmployeeRequest) returns (stream EmployeeResponse);
+}

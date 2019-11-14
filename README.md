@@ -1,5 +1,7 @@
 # PS-EnhanceAppComms-gRPC
-Pluralsight - Enhance Application Communications with gRPC (https://www.pluralsight.com/courses/grpc-enhancing-application-communication)
+Pluralsight - Enhance Application Communications with gRPC
+
+(https://www.pluralsight.com/courses/grpc-enhancing-application-communication)
 
 
 Extra bits you may need to get it running :
@@ -10,4 +12,5 @@ protoc -I ..\..\pb --csharp_out Messages ..\..\pb\messages.proto --grpc_out Mess
 
 
 2) Certs : OpenSSL Certs
+
 https://stackoverflow.com/questions/37714558/how-to-enable-server-side-ssl-for-grpc/37739265#37739265

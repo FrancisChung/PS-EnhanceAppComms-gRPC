@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "gRPCServer": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\Source\\Pluralsight\\PS-EnhanceAppComms-gRPC"
+    }
+  }
+}

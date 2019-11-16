@@ -1,8 +1,10 @@
+using Grpc.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-using Grpc.Core;
+using System.Threading.Tasks;
+using static Messages.EmployeeService;
+using Messages;
 
 
 namespace gRPCServer
@@ -23,7 +25,8 @@ namespace gRPCServer
 
             Server server = new Server
             {
-                Ports = {new ServerPort("0.0.0.0", Port, sslCredentials)}
+                Ports = {new ServerPort("0.0.0.0", Port, sslCredentials)},
+                Services = {BindService(new EmployeeService())}
             };
 
             server.Start();
@@ -35,6 +38,19 @@ namespace gRPCServer
             server.ShutdownAsync().Wait();
 
         }
+
+        public class EmployeeService : Messages.EmployeeService.EmployeeServiceBase
+        {
+            public override async Task<EmployeeResponse> GetByBadgeNumber(GetByBadgeNumberRequest request, ServerCallContext context)
+            {
+                Metadata md = context.RequestHeaders;
+                foreach (var entry in md)
+                {
+                    Console.WriteLine($"{entry.Key} : {entry.Value}");
+                }
+
+                return new EmployeeResponse();
+            }
+        }
     }
 }
-//
